@@ -74,7 +74,7 @@ router.patch('/exhibits/:id', requireToken, removeBlanks, (req, res, next) => {
 	Exhibit.findById(req.params.id)
 		.then(handle404)
 		.then((exhibit) => {
-			requireOwnership(req, exhibit)
+			// requireOwnership(req, exhibit)
 			return exhibit.updateOne(req.body.exhibit)
 		})
 		.then(() => res.sendStatus(204))
@@ -87,7 +87,7 @@ router.delete('/exhibits/:id', requireToken, (req, res, next) => {
 	Exhibit.findById(req.params.id)
 		.then(handle404)
 		.then((exhibit) => {
-			requireOwnership(req, exhibit)
+			// requireOwnership(req, exhibit)
 			//Also delete reviews of exhibit
 			Review.deleteMany({ exhibit: exhibit.id })
 				.catch(next)
