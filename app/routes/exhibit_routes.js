@@ -87,11 +87,15 @@ router.delete('/exhibits/:id', requireToken, (req, res, next) => {
 	Exhibit.findById(req.params.id)
 		.then(handle404)
 		.then((exhibit) => {
+				// throw an error if current user doesn't own `example`
+				// requireOwnership(req, exhibit)
+				// delete the example ONLY IF the above didn't throw
+				exhibit.deleteOne()
 			// requireOwnership(req, exhibit)
 			//Also delete reviews of exhibit
-			Review.deleteMany({ exhibit: exhibit.id })
-				.catch(next)
-			Exhibit.deleteOne()
+			// Review.deleteMany({ exhibit: exhibit.id })
+			// 	.catch(next)
+			// Exhibit.deleteOne()
 		})
 		.then(() => res.sendStatus(204))
 		.catch(next)
