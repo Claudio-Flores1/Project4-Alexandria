@@ -11,6 +11,10 @@ const exhibitSchema = new mongoose.Schema(
 			type: String,
 			required: true
 		},
+		info: {
+			type: String,
+			required: true
+		},
 		picture: {
 			type: String
 		},
