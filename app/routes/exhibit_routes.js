@@ -29,6 +29,7 @@ router.get('/exhibits', requireToken, (req, res, next) => {
 // SHOW
 // GET 
 router.get('/exhibits/:id', requireToken, (req, res, next) => {
+	console.log("WORKING")
 	Exhibit.findById(req.params.id)
 		.then(handle404)
 		.then(exhibit => {

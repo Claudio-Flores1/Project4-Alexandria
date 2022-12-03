@@ -16,7 +16,7 @@ const exhibitSchema = new mongoose.Schema(
 			required: true
 		},
 		picture: {
-			type: String
+			type: String,
 		},
 		artist: {
 			type: String,
